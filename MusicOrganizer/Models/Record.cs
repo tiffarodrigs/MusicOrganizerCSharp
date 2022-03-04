@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-namespace ToDoList.Models
+namespace MusicOrganizer.Models
 {
-  public class Item
+  public class Record
   {
 
     // properties, methods, etc. will go here.
@@ -10,14 +10,17 @@ namespace ToDoList.Models
     //Create item constuctor which has set the description and add the this item object to List
     //Cgreat a get method to get the list of itm obj
     //create a clearAll method to clear previous item objectt 
-    public string Description { get; set; }
-    private static List<Item> _instances = new List<Item> {};
-    public Item(string description)
+    public string Title { get; set; }
+    public int Id { get; }
+    private static List<Record> _instances = new List<Record> {};
+    public Record(string title)
+    
     {
-      Description = description;
+      Title = title;
       _instances.Add(this); // New code.
+      Id = _instances.Count;
     }
-    public static List<Item> GetAll()
+    public static List<Record> GetAll()
     {
     return _instances;
     }
@@ -25,6 +28,10 @@ namespace ToDoList.Models
     public static void ClearAll()
     {
       _instances.Clear();
+    }
+    public static Record Find(int searchId)
+    {
+      return _instances[searchId-1];
     }
   }
 }

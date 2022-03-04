@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+    @using MusicOrganizer.Models;
+
+    <h3>Here are all the artists that match your search:</h3>
+    <ol>
+    @foreach (Artist artist in Model)
+    {
+      <li><a href="/artists/@artist.Id">@artist.Name</a></li>
+    }
+    </ol>
+    <p><a href='/artists'>Return to artist list</a></p>
+    <p><a href='/'>Return to Main Page</a></p>
